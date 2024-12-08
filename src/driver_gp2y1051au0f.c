@@ -50,7 +50,7 @@
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a gp2y1051au0f handle structure
+ * @param[in] *handle pointer to a gp2y1051au0f handle structure
  * @return    status code
  *            - 0 success
  *            - 1 uart initialization failed
@@ -112,7 +112,7 @@ uint8_t gp2y1051au0f_init(gp2y1051au0f_handle_t *handle)
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a gp2y1051au0f handle structure
+ * @param[in] *handle pointer to a gp2y1051au0f handle structure
  * @return    status code
  *            - 0 success
  *            - 1 uart deinit failed
@@ -144,9 +144,9 @@ uint8_t gp2y1051au0f_deinit(gp2y1051au0f_handle_t *handle)
 
 /**
  * @brief      read the data
- * @param[in]  *handle points to a gp2y1051au0f handle structure
- * @param[out] *raw points to a raw buffer
- * @param[out] *mg_m3 points to a converted data buffer
+ * @param[in]  *handle pointer to a gp2y1051au0f handle structure
+ * @param[out] *raw pointer to a raw buffer
+ * @param[out] *mg_m3 pointer to a converted data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -234,10 +234,10 @@ uint8_t gp2y1051au0f_read(gp2y1051au0f_handle_t *handle, uint16_t *raw, float *m
 
 /**
  * @brief      get buffer
- * @param[in]  *handle points to a gp2y1051au0f handle structure
- * @param[out] *buf points to a data buffer
- * @param[in]  len is the buffer length
- * @param[in]  ms is the delay time in ms
+ * @param[in]  *handle pointer to a gp2y1051au0f handle structure
+ * @param[out] *buf pointer to a data buffer
+ * @param[in]  len buffer length
+ * @param[in]  ms delay time in ms
  * @return     status code
  *             - 0 success
  *             - 1 get buf failed
@@ -280,7 +280,7 @@ uint8_t gp2y1051au0f_get_buf(gp2y1051au0f_handle_t *handle, char *buf, uint16_t 
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to a gp2y1051au0f info structure
+ * @param[out] *info pointer to a gp2y1051au0f info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
