@@ -99,56 +99,56 @@ typedef struct gp2y1051au0f_info_s
 
 /**
  * @brief     initialize gp2y1051au0f_handle_t structure
- * @param[in] HANDLE points to a gp2y1051au0f handle structure
- * @param[in] STRUCTURE is gp2y1051au0f_handle_t
+ * @param[in] HANDLE pointer to a gp2y1051au0f handle structure
+ * @param[in] STRUCTURE gp2y1051au0f_handle_t
  * @note      none
  */
 #define DRIVER_GP2Y1051AU0F_LINK_INIT(HANDLE, STRUCTURE)   memset(HANDLE, 0, sizeof(STRUCTURE))
 
 /**
  * @brief     link uart_init function
- * @param[in] HANDLE points to a gp2y1051au0f handle structure
- * @param[in] FUC points to a uart_init function address
+ * @param[in] HANDLE pointer to a gp2y1051au0f handle structure
+ * @param[in] FUC pointer to a uart_init function address
  * @note      none
  */
 #define DRIVER_GP2Y1051AU0F_LINK_UART_INIT(HANDLE, FUC)   (HANDLE)->uart_init = FUC
 
 /**
  * @brief     link uart_deinit function
- * @param[in] HANDLE points to a gp2y1051au0f handle structure
- * @param[in] FUC points to a uart_deinit function address
+ * @param[in] HANDLE pointer to a gp2y1051au0f handle structure
+ * @param[in] FUC pointer to a uart_deinit function address
  * @note      none
  */
 #define DRIVER_GP2Y1051AU0F_LINK_UART_DEINIT(HANDLE, FUC) (HANDLE)->uart_deinit = FUC
 
 /**
  * @brief     link uart_read function
- * @param[in] HANDLE points to a gp2y1051au0f handle structure
- * @param[in] FUC points to a uart_read function address
+ * @param[in] HANDLE pointer to a gp2y1051au0f handle structure
+ * @param[in] FUC pointer to a uart_read function address
  * @note      none
  */
 #define DRIVER_GP2Y1051AU0F_LINK_UART_READ(HANDLE, FUC)   (HANDLE)->uart_read = FUC
 
 /**
  * @brief     link uart_flush function
- * @param[in] HANDLE points to a gp2y1051au0f handle structure
- * @param[in] FUC points to a uart_flush function address
+ * @param[in] HANDLE pointer to a gp2y1051au0f handle structure
+ * @param[in] FUC pointer to a uart_flush function address
  * @note      none
  */
 #define DRIVER_GP2Y1051AU0F_LINK_UART_FLUSH(HANDLE, FUC)  (HANDLE)->uart_flush = FUC
 
 /**
  * @brief     link delay_ms function
- * @param[in] HANDLE points to a gp2y1051au0f handle structure
- * @param[in] FUC points to a delay_ms function address
+ * @param[in] HANDLE pointer to a gp2y1051au0f handle structure
+ * @param[in] FUC pointer to a delay_ms function address
  * @note      none
  */
 #define DRIVER_GP2Y1051AU0F_LINK_DELAY_MS(HANDLE, FUC)    (HANDLE)->delay_ms = FUC
 
 /**
  * @brief     link debug_print function
- * @param[in] HANDLE points to a gp2y1051au0f handle structure
- * @param[in] FUC points to a debug_print function address
+ * @param[in] HANDLE pointer to a gp2y1051au0f handle structure
+ * @param[in] FUC pointer to a debug_print function address
  * @note      none
  */
 #define DRIVER_GP2Y1051AU0F_LINK_DEBUG_PRINT(HANDLE, FUC) (HANDLE)->debug_print = FUC
@@ -166,7 +166,7 @@ typedef struct gp2y1051au0f_info_s
 
 /**
  * @brief      get chip's information
- * @param[out] *info points to a gp2y1051au0f info structure
+ * @param[out] *info pointer to a gp2y1051au0f info structure
  * @return     status code
  *             - 0 success
  *             - 2 handle is NULL
@@ -176,7 +176,7 @@ uint8_t gp2y1051au0f_info(gp2y1051au0f_info_t *info);
 
 /**
  * @brief     initialize the chip
- * @param[in] *handle points to a gp2y1051au0f handle structure
+ * @param[in] *handle pointer to a gp2y1051au0f handle structure
  * @return    status code
  *            - 0 success
  *            - 1 uart initialization failed
@@ -188,7 +188,7 @@ uint8_t gp2y1051au0f_init(gp2y1051au0f_handle_t *handle);
 
 /**
  * @brief     close the chip
- * @param[in] *handle points to a gp2y1051au0f handle structure
+ * @param[in] *handle pointer to a gp2y1051au0f handle structure
  * @return    status code
  *            - 0 success
  *            - 1 uart deinit failed
@@ -200,9 +200,9 @@ uint8_t gp2y1051au0f_deinit(gp2y1051au0f_handle_t *handle);
 
 /**
  * @brief      read the data
- * @param[in]  *handle points to a gp2y1051au0f handle structure
- * @param[out] *raw points to a raw buffer
- * @param[out] *mg_m3 points to a converted data buffer
+ * @param[in]  *handle pointer to a gp2y1051au0f handle structure
+ * @param[out] *raw pointer to a raw buffer
+ * @param[out] *mg_m3 pointer to a converted data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
@@ -228,10 +228,10 @@ uint8_t gp2y1051au0f_read(gp2y1051au0f_handle_t *handle, uint16_t *raw, float *m
 
 /**
  * @brief      get buffer
- * @param[in]  *handle points to a gp2y1051au0f handle structure
- * @param[out] *buf points to a data buffer
- * @param[in]  len is the buffer length
- * @param[in]  ms is the delay time in ms
+ * @param[in]  *handle pointer to a gp2y1051au0f handle structure
+ * @param[out] *buf pointer to a data buffer
+ * @param[in]  len buffer length
+ * @param[in]  ms delay time in ms
  * @return     status code
  *             - 0 success
  *             - 1 get buf failed

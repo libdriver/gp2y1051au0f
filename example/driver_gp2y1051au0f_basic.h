@@ -70,7 +70,7 @@ uint8_t gp2y1051au0f_basic_deinit(void);
 
 /**
  * @brief      basic example read
- * @param[out] *mg_m3 points to a converted data buffer
+ * @param[out] *mg_m3 pointer to a converted data buffer
  * @return     status code
  *             - 0 success
  *             - 1 read failed
