@@ -10,7 +10,7 @@
 
 GP2Y1051AU0F is a dust sensor by optical sensing system. An infrared emitting diode (IRED) and an phototransistor are diagonally arranged into this device. It detects the reflected light of dust in air. Especially, it is effective to detect very fine particle like the cigarette smoke. In addition it can distinguish smoke from house dust by pulse pattern of output voltage.
 
-LibDriver GP2Y1051AU0F is the full function driver of GP2Y1051AU0F launched by LibDriver.It provides the function of dust density reading and other functions. LibDriver is MISRA compliant.
+LibDriver GP2Y1051AU0F is a full-featured driver of GP2Y1051AU0F launched by LibDriver.It provides the function of dust density reading and other functions. LibDriver is MISRA compliant.
 
 ### Table of Contents
 
