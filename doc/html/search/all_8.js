@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['uart_5fdeinit_63',['uart_deinit',['../structgp2y1051au0f__handle__s.html#a57faa7438fdabb6134dabb8b386707a8',1,'gp2y1051au0f_handle_s']]],
-  ['uart_5fflush_64',['uart_flush',['../structgp2y1051au0f__handle__s.html#a1926b171e2786f52634d78953df6612a',1,'gp2y1051au0f_handle_s']]],
-  ['uart_5finit_65',['uart_init',['../structgp2y1051au0f__handle__s.html#ad6e221373f53cf56fdeec9c64bbc6423',1,'gp2y1051au0f_handle_s']]],
-  ['uart_5fread_66',['uart_read',['../structgp2y1051au0f__handle__s.html#a9f6681bb2ac30875d94d016ad0137ab2',1,'gp2y1051au0f_handle_s']]]
+  ['mainpage_2eh_0',['mainpage.h',['../mainpage_8h.html',1,'']]],
+  ['manufacturer_5fname_1',['MANUFACTURER_NAME',['../driver__gp2y1051au0f_8c.html#aaa2b8f5b105c3019df0cb346f472e803',1,'driver_gp2y1051au0f.c']]],
+  ['manufacturer_5fname_2',['manufacturer_name',['../structgp2y1051au0f__info__s.html#ad25285dbf810c90f8eaf3fcef6f2b2ea',1,'gp2y1051au0f_info_s']]],
+  ['max_5fcurrent_3',['MAX_CURRENT',['../driver__gp2y1051au0f_8c.html#a2989837a37d6d63b59c6dd541b785435',1,'driver_gp2y1051au0f.c']]],
+  ['max_5fcurrent_5fma_4',['max_current_ma',['../structgp2y1051au0f__info__s.html#a9db82802561bf22d799b03a345f1d1dc',1,'gp2y1051au0f_info_s']]]
 ];
