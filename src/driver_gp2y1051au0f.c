@@ -166,6 +166,8 @@ uint8_t gp2y1051au0f_read(gp2y1051au0f_handle_t *handle, uint16_t *raw, float *m
     uint16_t len;
     uint16_t check_sum;
     uint8_t buf[14];
+    uint16_t raw_vref;
+    int32_t delta_raw;
     
     if (handle == NULL)                                                          /* check handle */
     {
@@ -226,8 +228,14 @@ uint8_t gp2y1051au0f_read(gp2y1051au0f_handle_t *handle, uint16_t *raw, float *m
         
         return 6;                                                                /* return error */
     }
-    *raw = ((uint16_t)buf[offset + 1]) << 8 | buf[offset + 2];                   /* get raw */
-    *mg_m3 = (float)(*raw) / 3.5f;                                               /* convert to mg/m3 */
+    *raw = ((uint16_t)buf[offset + 1]) << 8 | buf[offset + 2];                   /* set raw */
+    raw_vref = ((uint16_t)buf[offset + 3]) << 8 | buf[offset + 4];               /* set raw vref */
+    delta_raw = (int32_t)(*raw) - (int32_t)raw_vref;                             /* set delta raw */
+    if (delta_raw < 0)                                                           /* check delta raw */
+    {
+        delta_raw = 0;                                                           /* init 0 */
+    }
+    *mg_m3 = (float)(delta_raw) / 716.8f;                                        /* convert to mg/m3 */
     
     return 0;                                                                    /* success return 0 */ 
 }
