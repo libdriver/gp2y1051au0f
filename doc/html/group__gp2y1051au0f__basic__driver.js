@@ -20,6 +20,7 @@ var group__gp2y1051au0f__basic__driver =
       [ "temperature_max", "structgp2y1051au0f__info__s.html#a3366a5dce9b829e03c3d321c2b4df3f6", null ],
       [ "temperature_min", "structgp2y1051au0f__info__s.html#a8f9dbe66ac0b66ebae0a36fcb4ba368e", null ]
     ] ],
+    [ "GP2Y1051AU0F_SENSITIVITY", "group__gp2y1051au0f__basic__driver.html#gab63ef3f61a04c0beeb27ac51f2330803", null ],
     [ "gp2y1051au0f_handle_t", "group__gp2y1051au0f__basic__driver.html#ga74f34610054bdf74ef050fcee6ee05c8", null ],
     [ "gp2y1051au0f_info_t", "group__gp2y1051au0f__basic__driver.html#ga818014ab8b77bc4591a43d57662b0469", null ],
     [ "gp2y1051au0f_deinit", "group__gp2y1051au0f__basic__driver.html#gad7e338f851dff38bcd04102dbc1c3044", null ],

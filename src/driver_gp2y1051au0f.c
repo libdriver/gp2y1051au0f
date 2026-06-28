@@ -235,7 +235,7 @@ uint8_t gp2y1051au0f_read(gp2y1051au0f_handle_t *handle, uint16_t *raw, float *m
     {
         delta_raw = 0;                                                           /* init 0 */
     }
-    *mg_m3 = (float)(delta_raw) / 716.8f;                                        /* convert to mg/m3 */
+    *mg_m3 = (float)(delta_raw) / GP2Y1051AU0F_SENSITIVITY;                      /* convert to mg/m3 */
     
     return 0;                                                                    /* success return 0 */ 
 }

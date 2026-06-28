@@ -7,6 +7,7 @@ var driver__gp2y1051au0f_8h =
     [ "DRIVER_GP2Y1051AU0F_LINK_UART_FLUSH", "group__gp2y1051au0f__link__driver.html#gaf55ee7ef1d27a16bbfd2d5024dc3549f", null ],
     [ "DRIVER_GP2Y1051AU0F_LINK_UART_INIT", "group__gp2y1051au0f__link__driver.html#gae2b6e078ac5ee0ea449c06a6263f27a7", null ],
     [ "DRIVER_GP2Y1051AU0F_LINK_UART_READ", "group__gp2y1051au0f__link__driver.html#ga8d98998f8c90b2af2cea14e02775dff0", null ],
+    [ "GP2Y1051AU0F_SENSITIVITY", "group__gp2y1051au0f__basic__driver.html#gab63ef3f61a04c0beeb27ac51f2330803", null ],
     [ "gp2y1051au0f_handle_t", "group__gp2y1051au0f__basic__driver.html#ga74f34610054bdf74ef050fcee6ee05c8", null ],
     [ "gp2y1051au0f_info_t", "group__gp2y1051au0f__basic__driver.html#ga818014ab8b77bc4591a43d57662b0469", null ],
     [ "gp2y1051au0f_deinit", "group__gp2y1051au0f__basic__driver.html#gad7e338f851dff38bcd04102dbc1c3044", null ],
