@@ -57,6 +57,13 @@ extern "C"{
  */
 
 /**
+ * @brief gp2y1051au0f sensitivity definition
+ */
+#ifndef GP2Y1051AU0F_SENSITIVITY
+    #define GP2Y1051AU0F_SENSITIVITY        716.8f        /**< k = 0.35f */
+#endif
+
+/**
  * @brief gp2y1051au0f handle structure definition
  */
 typedef struct gp2y1051au0f_handle_s
