@@ -161,8 +161,10 @@ uint8_t gp2y1051au0f_read(gp2y1051au0f_handle_t *handle, uint16_t *raw, float *m
 {
     uint8_t res;
     uint8_t i;
+    uint8_t j;
     uint8_t offset;
     uint8_t done;
+    uint8_t err;
     uint16_t len;
     uint16_t check_sum;
     uint8_t buf[14];
@@ -195,47 +197,59 @@ uint8_t gp2y1051au0f_read(gp2y1051au0f_handle_t *handle, uint16_t *raw, float *m
     }
     offset = 0;                                                                  /* init 0 */
     done = 0;                                                                    /* init 0 */
-    for (i = 0; i < 14; i++)                                                     /* loop all */
+    err = 5;                                                                     /* no valid frame found */
+    for (i = 0; i < 14; i++)                                                     /* scan the whole buffer */
     {
-        if ((buf[i] == 0xAA) && ((i + 7) < 14))                                  /* check frame */
+        if ((buf[i] == 0xAA) && ((i + 6) < 14))                                  /* head 0xAA and 7 bytes available */
         {
             if (buf[i + 6] != 0xFF)                                              /* check frame trail */
             {
-                handle->debug_print("gp2y1051au0f: frame is invalid.\n");        /* frame is invalid */
+                err = 4;                                                         /* frame is invalid */
                 
-                return 4;                                                        /* return error */
+                continue;                                                        /* could be a fake head, keep scanning */
             }
-            offset = i;                                                          /* sava index */
+            check_sum = 0;                                                       /* init 0 */
+            for (j = 1; j < 5; j++)                                              /* sum */
+            {
+                check_sum += buf[i + j];                                         /* sum all */
+            }
+            if ((check_sum & 0xFF) != buf[i + 5])                                /* check sum */
+            {
+                err = 6;                                                         /* frame check error */
+                
+                continue;                                                        /* fake frame, keep scanning */
+            }
+            offset = i;                                                          /* save index */
             done = 1;                                                            /* flag done */
             
-            break;                                                               /* break */
+            break;                                                               /* valid frame found */
         }
     }
     if (done != 1)                                                               /* check done */
     {
-        handle->debug_print("gp2y1051au0f: frame is error.\n");                  /* frame is error */
+        if (err == 6)                                                            /* checksum error */
+        {
+            handle->debug_print("gp2y1051au0f: frame check error.\n");           /* frame check error */
+        }
+        else if (err == 4)                                                       /* invalid trail */
+        {
+            handle->debug_print("gp2y1051au0f: frame is invalid.\n");            /* frame is invalid */
+        }
+        else
+        {
+            handle->debug_print("gp2y1051au0f: frame is error.\n");              /* frame is error */
+        }
         
-        return 5;                                                                /* return error */
+        return err;                                                              /* return the last error */
     }
-    check_sum = 0;                                                               /* init 0 */
-    for (i = 1; i < 5; i++)                                                      /* sum 4 bytes */
-    {
-        check_sum += buf[offset + i];                                            /* sum all */
-    }
-    if ((check_sum & 0xFF) != buf[offset + 5])                                   /* check sum */
-    {
-        handle->debug_print("gp2y1051au0f: frame check error.\n");               /* frame check error */
-        
-        return 6;                                                                /* return error */
-    }
-    *raw = ((uint16_t)buf[offset + 1]) << 8 | buf[offset + 2];                   /* set raw */
+    *raw = ((uint16_t)buf[offset + 1]) << 8 | buf[offset + 2];                   /* set raw vout */
     raw_vref = ((uint16_t)buf[offset + 3]) << 8 | buf[offset + 4];               /* set raw vref */
     delta_raw = (int32_t)(*raw) - (int32_t)raw_vref;                             /* set delta raw */
     if (delta_raw < 0)                                                           /* check delta raw */
     {
-        delta_raw = 0;                                                           /* init 0 */
+        delta_raw = 0;                                                           /* clamp to 0 */
     }
-    *mg_m3 = (float)(delta_raw) / GP2Y1051AU0F_SENSITIVITY;                      /* convert to mg/m3 */
+    *mg_m3 = (float)(delta_raw) / GP2Y1051AU0F_SENSITIVITY;                      /* convert to mg / m3 */
     
     return 0;                                                                    /* success return 0 */ 
 }
@@ -308,8 +322,8 @@ uint8_t gp2y1051au0f_info(gp2y1051au0f_info_t *info)
     info->supply_voltage_min_v = SUPPLY_VOLTAGE_MIN;                /* set minimal supply voltage */
     info->supply_voltage_max_v = SUPPLY_VOLTAGE_MAX;                /* set maximum supply voltage */
     info->max_current_ma = MAX_CURRENT;                             /* set maximum current */
-    info->temperature_max = TEMPERATURE_MAX;                        /* set minimal temperature */
-    info->temperature_min = TEMPERATURE_MIN;                        /* set maximum temperature */
+    info->temperature_max = TEMPERATURE_MAX;                        /* set maximum temperature */
+    info->temperature_min = TEMPERATURE_MIN;                        /* set minimal temperature */
     info->driver_version = DRIVER_VERSION;                          /* set driver version */
     
     return 0;                                                       /* success return 0 */
